@@ -21,6 +21,8 @@ from app.routers import learning_roadmaps
 from app.routers import job_recommendations
 from app.routers import semantic_matches
 from app.routers import rag
+from app.routers import async_career_coach
+# from app.routers import vector_rag
 
 Base.metadata.create_all(
     bind=engine
@@ -133,4 +135,16 @@ app.include_router(
     rag.router,
     prefix="/api/rag",
     tags=["RAG Knowledge Base"],
+)
+
+# app.include_router(
+#     vector_rag.router,
+#     prefix="/api/vector-rag",
+#     tags=["PgVector RAG"],
+# )
+
+app.include_router(
+    async_career_coach.router,
+    prefix="/api/async-career-coach",
+    tags=["Async AI Career Coach"],
 )
