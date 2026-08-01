@@ -359,6 +359,38 @@ class LLMClient:
                 ]
             }
 
+    def generate_career_coach_answer(
+        self,
+        question: str,
+        context: str,
+        conversation_history: str,
+        target_role: str | None = None,
+    ) -> str:
+        """
+        Generate career coaching answer using RAG context and conversation history.
+        """
+
+        system_prompt = (
+            "You are a senior AI career coach, technical mentor, and interview preparation expert. "
+            "Give practical, structured, honest, and actionable career guidance. "
+            "Use the provided context when available. "
+            "If context is not enough, answer using general software engineering and AI career knowledge. "
+            "Do not invent fake experience for the user."
+        )
+
+        user_prompt = (
+            f"Target Role:\n{target_role or 'Not specified'}\n\n"
+            f"Conversation History:\n{conversation_history or 'No previous conversation.'}\n\n"
+            f"Retrieved Knowledge Base Context:\n{context or 'No relevant context found.'}\n\n"
+            f"User Question:\n{question}\n\n"
+            "Answer as a practical AI career coach."
+        )
+
+        return self._call_llm(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+        )
+
     def _parse_json_with_defaults(
         self,
         content: str,

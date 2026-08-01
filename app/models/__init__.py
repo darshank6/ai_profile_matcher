@@ -9,3 +9,6 @@ from app.models.interview_question import *
 from app.models.learning_roadmap import *
 from app.models.semantic_match import *
 from app.models.rag import *
+# from app.models.vector_rag import *
+from app.models.job_recommendation import *
+from app.models.career_coach import *

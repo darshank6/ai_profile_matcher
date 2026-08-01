@@ -130,3 +130,33 @@ class User(Base):
         back_populates="user",
         cascade="all, delete-orphan",
     )
+
+    # vector_rag_documents = relationship(
+    #     "VectorRAGDocument",
+    #     back_populates="user",
+    #     cascade="all, delete-orphan",
+    #     )
+        
+    # vector_rag_chunks = relationship(
+    #     "VectorRAGChunk",
+    #     back_populates="user",
+    #     cascade="all, delete-orphan",
+    # )
+        
+    # vector_rag_query_reports = relationship(
+    #     "VectorRAGQueryReport",
+    #     back_populates="user",
+    #     cascade="all, delete-orphan",
+    # )
+
+    career_coach_sessions = relationship(
+        "CareerCoachSession",
+        back_populates="user",
+        cascade="all, delete-orphan",
+    )
+
+    career_coach_messages = relationship(
+        "CareerCoachMessage",
+        back_populates="user",
+        cascade="all, delete-orphan",
+    )
